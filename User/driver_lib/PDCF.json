@@ -1,0 +1,195 @@
+{
+    "driver_code_output_path" : "SW003\\User\\driver_lib",
+    "driver_config": {
+        "print": {
+            "OUTPUT_BUFFER_SIZE": "256",
+            "vsnprintf": {
+                "std": {}
+            },
+            "mcu": {
+                "stm32f411ce": {
+                    "uart_handle": "&huart1",
+                    "scan" : {
+                        "enable" : {
+                            "scanning_interval": "50",
+                            "OS" : {
+                                "cmsis2" : {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "w25q128": {
+            "mcu": {
+                "stm32f411ce": {
+                    "serial_fun": {
+                        "print": {
+                            "print": "reference"
+                        }
+                    },
+                    "SWCS_GPIO_Port": "GPIOB",
+                    "SWCS_Pin": "GPIO_PIN_8",
+                    "SPI_TYPE": {
+                        "hardwire": {
+                            "SPI_HANDLE": "&hspi3"
+                        }
+                    }
+                }
+            },
+            "resource_manager": "reference"
+        },
+        "resource_manager" : {
+            "MAX_RESOURCES": "10",
+            "mcu": {
+                "stm32f411ce": {
+                    "serial_fun": {
+                        "off": {}
+                    }
+                }
+            },
+            "timer_period_ms": "100",
+            "timer_mode": {
+                "resource_manager": {}
+            }
+        },
+        "button": {
+            "app_handle_mode": {
+                "callback": {}
+            },
+            "feature": {
+                "single_double_long_click": {
+                    "scan_timer_period": "10",
+                    "double_click_window": "500",
+                    "long_press_time": "1000"
+                }
+            },
+            "filter": {
+                "threshold_counter": {
+                    "threshold_counter_filter": "reference"
+                }
+            },
+            "mcu": {
+                "stm32f411ce": {
+                    "button_number": {
+                        "3": {
+                            "KEY1_GPIO_Port": "GPIOA",
+                            "KEY1_Pin": "GPIO_PIN_0",
+                            "KEY2_GPIO_Port": "GPIOA",
+                            "KEY2_Pin": "GPIO_PIN_1",
+                            "KEY3_GPIO_Port": "GPIOA",
+                            "KEY3_Pin": "GPIO_PIN_2"
+                        }
+                    }
+                }
+            },
+            "lowpower": {
+                "on": {
+                    "idle_timeout_ms": "3000"
+                }
+            },
+            "tick_timer": {
+                "dependent": {}
+            }
+        },
+        "threshold_counter_filter": {
+            "threshold_high": "2",
+            "threshold_low": "2",
+            "increment_step": "1",
+            "decrement_step": "1",
+            "Mode": {
+                "biased": {}
+            }
+        },
+        "lighting": {
+            "mcu": {
+                "stm32f411ce": {
+                    "tim_number": {
+                        "tim1": {
+                            "channel": {
+                                "ch1n": {}
+                            }
+                        }
+                    },
+                    "GPIO_Port": "GPIOB",
+                    "Pin": "GPIO_PIN_13",
+                    "Polarity": {
+                        "High": {}
+                    }
+                }
+            }
+        },
+        "gc9a01": {
+            "mcu": {
+                "stm32f411ce": {
+                    "DELAY_MS_IF": {
+                        "cmsis_os2": {}
+                    },
+                    "data_command_GPIO_Port": "GPIOA",
+                    "data_command_Pin": "GPIO_PIN_6",
+                    "reset_GPIO_Port": "GPIOA",
+                    "reset_Pin": "GPIO_PIN_3",
+                    "spi_type": {
+                        "hardwire_hwcs": {
+                            "spi_number": {
+                                "SPI1": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "lcd": {
+            "mcu": {
+                "stm32f411ce": {
+                    "lighting": "reference",
+                    "display_ic": {
+                        "gc9a01": {
+                            "gc9a01": "reference"
+                        }
+                    }
+                }
+            }
+        },
+        "lvgl_v9_3_0": {
+            "lcd": "reference",
+            "print": "reference",
+            "horizontal_resolution": "240",
+            "vertical_resolution": "240",
+            "coler_depth": {
+                "RGB565": {}
+            },
+            "inputArch": {
+                "keyboard": {}
+            },
+            "MCU_with_byte_flip_is": {
+                "true": {}
+            },
+            "stack_size_of_render_thread": "(4 * 1024)",
+            "FAT": {
+                "enable": {
+                    "buffer_size_for_lvgl_read_write_file": "(8 * 1024)",
+                    "drive_letter": "'0'"
+                }
+            }
+        },
+        "lsm6dso": {
+            "mcu": {
+                "stm32f411ce": {
+                    "DELAY_MS_IF": {
+                        "FreeRTOS": {}
+                    },
+                    "SWCS_GPIO_Port": "GPIOA",
+                    "SWCS_Pin": "GPIO_PIN_8",
+                    "SPI_TYPE": {
+                        "hardwire": {
+                            "SPI_HANDLE": "&hspi2"
+                        }
+                    }
+                }
+            }
+        },
+        "cfqueue": {
+        }
+    }
+}

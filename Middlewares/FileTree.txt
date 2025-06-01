@@ -1,0 +1,81 @@
+Middlewares
+├── ST
+│   └── STM32_USB_Device_Library
+│       ├── Class
+│       │   └── MSC
+│       │       ├── Inc
+│       │       │   ├── usbd_msc.h
+│       │       │   ├── usbd_msc_bot.h
+│       │       │   ├── usbd_msc_data.h
+│       │       │   └── usbd_msc_scsi.h
+│       │       └── Src
+│       │           ├── usbd_msc.c
+│       │           ├── usbd_msc_bot.c
+│       │           ├── usbd_msc_data.c
+│       │           └── usbd_msc_scsi.c
+│       ├── Core
+│       │   ├── Inc
+│       │   │   ├── usbd_core.h
+│       │   │   ├── usbd_ctlreq.h
+│       │   │   ├── usbd_def.h
+│       │   │   └── usbd_ioreq.h
+│       │   └── Src
+│       │       ├── usbd_core.c
+│       │       ├── usbd_ctlreq.c
+│       │       └── usbd_ioreq.c
+│       └── LICENSE.txt
+└── Third_Party
+    ├── FatFs
+    │   └── src
+    │       ├── diskio.c
+    │       ├── diskio.h
+    │       ├── ff.c
+    │       ├── ff.h
+    │       ├── ff_gen_drv.c
+    │       ├── ff_gen_drv.h
+    │       ├── integer.h
+    │       └── option
+    │           ├── ccsbcs.c
+    │           └── syscall.c
+    └── FreeRTOS
+        └── Source
+            ├── CMSIS_RTOS_V2
+            │   ├── cmsis_os.h
+            │   ├── cmsis_os2.c
+            │   ├── cmsis_os2.h
+            │   ├── freertos_mpool.h
+            │   └── freertos_os2.h
+            ├── LICENSE
+            ├── croutine.c
+            ├── event_groups.c
+            ├── include
+            │   ├── FreeRTOS.h
+            │   ├── StackMacros.h
+            │   ├── atomic.h
+            │   ├── croutine.h
+            │   ├── deprecated_definitions.h
+            │   ├── event_groups.h
+            │   ├── list.h
+            │   ├── message_buffer.h
+            │   ├── mpu_prototypes.h
+            │   ├── mpu_wrappers.h
+            │   ├── portable.h
+            │   ├── projdefs.h
+            │   ├── queue.h
+            │   ├── semphr.h
+            │   ├── stack_macros.h
+            │   ├── stream_buffer.h
+            │   ├── task.h
+            │   └── timers.h
+            ├── list.c
+            ├── portable
+            │   ├── GCC
+            │   │   └── ARM_CM4F
+            │   │       ├── port.c
+            │   │       └── portmacro.h
+            │   └── MemMang
+            │       └── heap_4.c
+            ├── queue.c
+            ├── stream_buffer.c
+            ├── tasks.c
+            └── timers.c

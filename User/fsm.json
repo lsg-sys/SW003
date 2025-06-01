@@ -1,0 +1,165 @@
+[
+    {
+        "node_name": "SmartWatches",
+        "initial_state": "Initialize",
+        "initial_internal_event": "PowerOn",
+        "goto_table": [
+            {
+                "curr_state": "Initialize", "next_state": "Initialize", 
+                "event": {"event_name":"PowerOn", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Initialize", "next_state": "Initialize", 
+                "event": {"event_name":"CmdInitializationIsComplete", "src_node":["Cmd"]}
+            },
+            {
+                "curr_state": "Initialize", "next_state": "Initialize", 
+                "event": {"event_name":"PanelInitializationIsComplete", "src_node":["Panel"]}
+            },
+            {
+                "curr_state": "Initialize", "next_state": "Initialize", 
+                "event": {"event_name":"MemsInitializationIsComplete", "src_node":["Mems"]}
+            },
+            {
+                "curr_state": "Initialize", "next_state": "Running", 
+                "event": {"event_name":"KeyboardInitializationIsComplete", "src_node":["Keyboard"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Running", 
+                "event": {"event_name":"KeyboardInput", "src_node":["Keyboard"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Running", 
+                "event": {"event_name":"MemsInput", "src_node":["Mems"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Running", 
+                "event": {"event_name":"CmdInput", "src_node":["Cmd"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Sleep", 
+                "event": {"event_name":"TriggerSleep", "src_node":["Cmd"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Sleep", 
+                "event": {"event_name":"Timeout", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Sleep", "next_state": "Running", 
+                "event": {"event_name":"KeyboardInput", "src_node":["Keyboard"]}
+            },
+            {
+                "curr_state": "Sleep", "next_state": "Running", 
+                "event": {"event_name":"MemsInput", "src_node":["Mems"]}
+            },
+            {
+                "curr_state": "Sleep", "next_state": "Running", 
+                "event": {"event_name":"CmdInput", "src_node":["Cmd"]}
+            },
+            {
+                "curr_state": "Sleep", "next_state": "Sleep", 
+                "event": {"event_name":"Sync", "src_node":["Cmd", "Keyboard", "Mems", "Panel"]}
+            }
+        ]
+    },
+    {
+        "node_name": "Keyboard",
+        "initial_state": "Initialize",
+        "initial_internal_event": "None",
+        "goto_table": [
+            {
+                "curr_state": "Initialize", "next_state": "Running", 
+                "event": {"event_name":"TriggerKeyboardInitialization", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Pause", 
+                "event": {"event_name":"TriggerPause", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Pause", "next_state": "Running", 
+                "event": {"event_name":"TriggerResume", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Pause", "next_state": "Pause",
+                "event": {"event_name":"Sync", "src_node":["SmartWatches"]}
+            }
+        ]
+    },
+    {
+        "node_name": "Cmd",
+        "initial_state": "Initialize",
+        "initial_internal_event": "None",
+        "goto_table": [
+            {
+                "curr_state": "Initialize", "next_state": "Running", 
+                "event": {"event_name":"TriggerCmdInitialization", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Running", 
+                "event": {"event_name":"IRQInput", "src_node":["Cmd"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Pause", 
+                "event": {"event_name":"TriggerPause", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Pause", "next_state": "Running", 
+                "event": {"event_name":"TriggerResume", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Pause", "next_state": "Pause",
+                "event": {"event_name":"Sync", "src_node":["SmartWatches"]}
+            }
+        ]
+    },
+    {
+        "node_name": "Panel",
+        "initial_state": "Initialize",
+        "initial_internal_event": "None",
+        "goto_table": [
+            {
+                "curr_state": "Initialize", "next_state": "Running", 
+                "event": {"event_name":"TriggerPanelInitialization", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Running", 
+                "event": {"event_name":"KeyInput", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Sleep", 
+                "event": {"event_name":"TriggerSleep", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Sleep", "next_state": "Running", 
+                "event": {"event_name":"TriggerWakeup", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state":"Sleep", "next_state":"Sleep",
+                "event":{"event_name":"Sync", "src_node":["SmartWatches"]}  
+            }
+        ]
+    },
+    {
+        "node_name": "Mems",
+        "initial_state": "Initialize",
+        "initial_internal_event": "None",
+        "goto_table": [
+            {
+                "curr_state": "Initialize", "next_state": "Running", 
+                "event": {"event_name":"TriggerMemsInitialization", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Running", "next_state": "Pause", 
+                "event": {"event_name":"TriggerPause", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state": "Pause", "next_state": "Running", 
+                "event": {"event_name":"TriggerResume", "src_node":["SmartWatches"]}
+            },
+            {
+                "curr_state":"Pause", "next_state":"Pause",
+                "event":{"event_name":"Sync", "src_node":["SmartWatches"]}  
+            }
+        ]
+    }
+]
